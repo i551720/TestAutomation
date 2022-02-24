@@ -48,7 +48,7 @@
   
     - name: "10030 - ADD ALL SPINES FOUND AS HOSTS FOR NEXT PLAY"
       ansible.builtin.add_host:
-        name: "{{ item.key }}"
+        name:           "{{ item.key }}"
         interfaces: "{{ enable_interfaces[item.key]['interfaces'] }}"
         passvault_password_id: "{{ enable_interfaces[item.key]['passvault_password_id'] }}"
         os_type: "{{ enable_interfaces[item.key]['platform'] | determine_os() }}"
