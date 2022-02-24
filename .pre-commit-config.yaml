@@ -1,13 +1,43 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
-    hooks:
-    -   id: check-yaml
-    -   id: end-of-file-fixer
-    -   id: trailing-whitespace
-
 -   repo: https://github.com/psf/black
     rev: 21.9b0
     hooks:
     -   id: black
         args: [--safe]
+
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+    -   id: debug-statements
+        language_version: python3
+
+-   repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.26.3
+    hooks:
+      - id: yamllint
+        exclude: >
+          (?x)^(
+            examples/playbooks/templates/.*|
+            examples/other/some.j2.yaml|
+            test/fixtures/formatting-before/.*
+          )$
+        files: \.(yaml|yml)$
+        types: [file, yaml]
+        entry: yamllint --strict
+
+-  repo: https://github.com/pycqa/flake8.git
+   rev: 4.0.1
+   hooks:
+      - id: flake8
+        language_version: python3
+        additional_dependencies:
+          - flake8-2020>=1.6.0
+          # - flake8-black>=0.1.1
+          - flake8-docstrings>=1.5.0
+          - flake8-pytest-style>=1.2.2
