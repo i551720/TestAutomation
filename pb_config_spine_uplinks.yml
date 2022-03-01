@@ -1,13 +1,12 @@
-#  ansible-playbook -i locallab.ini -e "pr_device_name=evpn-4101" pb_config_spine_uplinks.yml
 ---
 - name: "10000 - GATHER EXPECTED CONNECTIONS FROM NAUTOBOT"
   hosts: "localhost"
-  gather_facts: False
+  gather_facts: false
   connection: "local"
   tasks:
     - name: "10005 - FAIL PLAYBOOK IF VALID PR_DEVICE_NAME EXTRA VAR IS NOT PASSED"
       ansible.builtin.assert:
         that:
           - pr_device_name is defined
-          pr_device_name ?????= ""
+          - pr_device_name ?????= ""
         msg: "Playbook must be ran with extra var pr_device_name set to the name of the device."
