@@ -1,3 +1,4 @@
+---
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
@@ -21,12 +22,6 @@ repos:
     rev: v1.26.3
     hooks:
       - id: yamllint
-        exclude: >
-          (?x)^(
-            examples/playbooks/templates/.*|
-            examples/other/some.j2.yaml|
-            test/fixtures/formatting-before/.*
-          )$
         files: \.(yaml|yml)$
         types: [file, yaml]
         entry: yamllint --strict
