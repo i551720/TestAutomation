@@ -9,4 +9,4 @@
         that:
           - pr_device_name is defined
           - pr_device_name ?????= ""
-        msg: "Playbook must be ran with extra var pr_device_name set to the name of the device."
+        msg: "Playbook must be ran with extra var pr_device_name set to the name of the device.".
